@@ -1,0 +1,14 @@
+# Fichiers temporaires Office (Word/Excel/PowerPoint)
+~$*.docx
+~$*.doc
+~$*.xlsx
+~$*.pptx
+*.tmp
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS (au cas où)
+.DS_Store
