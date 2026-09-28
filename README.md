@@ -15,7 +15,7 @@ Ce dépôt est synchronisé via Git pour permettre de bosser depuis le PC portab
 Sur un nouveau poste :
 
 ```bash
-git clone <url-du-repo>
+git clone https://github.com/Kapetaine-dev/HomeOps.git
 cd HomeOps
 ```
 
