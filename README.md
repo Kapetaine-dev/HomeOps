@@ -13,13 +13,14 @@ maquettes), pas encore le code applicatif.
 
 ```
 HomeOps-PERIMETRE.docx            Fiche de périmètre MVP (règles métier RM01–RM26)
-HomeOps-SPECIFICATIONV1.docx      Spécification fonctionnelle et technique — v1.1 (gelée),
-                                  111 exigences, 36 recettes, 19 schémas, 17 décisions, MCD
+HomeOps-SPECIFICATIONV1.docx      Spécification fonctionnelle et technique — v1.2,
+                                  111 exigences, 36 recettes, 15 schémas, 17 décisions, MCD
 HomeOps-DOSSIER-CERTIFICATION.docx Dossier de certification
 Conception/
   Uses-Cases/                     7 vues cas d'usage UML (accès, services, consultation,
                                   incidents, pilotage, réglages/alertes, énergie)
   Maquettes/                      7 captures d'écran de référence (thème clair)
+  MCD.md / MCD.svg / MCD.png      MCD Merise v1.2 (14 entités, 12 associations), schéma unique
 homeops-sync.ps1                  Script de synchronisation git multi-postes
 .gitignore                        Fichiers temporaires Office/Windows
 ```
@@ -30,7 +31,8 @@ homeops-sync.ps1                  Script de synchronisation git multi-postes
 ## Statut
 
 Spécification **v1.1 gelée** (11 octobre 2026) : fonctionnalités, règles métier, contrats
-et critères de recette. MCD inclus ; **MLD / MPD à produire** lors de la conception détaillée.
+et critères de recette. Révision 1.2 (3 novembre 2026) : MCD simplifié, schéma unique FIG04.
+**MLD / MPD à produire** lors de la conception détaillée.
 Le gel ne vaut ni implémentation ni test réalisé.
 
 ## Travailler depuis plusieurs postes
