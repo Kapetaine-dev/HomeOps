@@ -30,8 +30,8 @@ homeops-sync.ps1                  Script de synchronisation git multi-postes
 
 ## Statut
 
-Spécification **v1.1 gelée** (11 octobre 2026) : fonctionnalités, règles métier, contrats
-et critères de recette. Révisions 1.2 et 1.3 (3 novembre 2026) : MCD simplifié, schéma unique FIG04, spec allégée.
+Spécification **v1.3 figée** (3 novembre 2026) : fonctionnalités, règles métier, contrats,
+critères de recette et MCD (schéma unique FIG04).
 **MLD / MPD à produire** lors de la conception détaillée.
 Le gel ne vaut ni implémentation ni test réalisé.
 
