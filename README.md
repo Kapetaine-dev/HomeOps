@@ -12,21 +12,22 @@ maquettes), pas encore le code applicatif.
 ## Structure
 
 ```
-HomeOps-PERIMETRE.docx            Fiche de périmètre MVP (règles métier RM01–RM26)
-HomeOps-SPECIFICATIONV1.docx      Spécification fonctionnelle et technique — v1.3,
-                                  111 exigences, 36 recettes, 15 schémas, 17 décisions, MCD
-HomeOps-DOSSIER-CERTIFICATION.docx Dossier de certification
+Docs/
+  HomeOps-PERIMETRE.docx              Fiche de périmètre MVP (règles métier RM01–RM26)
+  HomeOps-SPECIFICATION.docx          Spécification fonctionnelle et technique — v1.3,
+                                      111 exigences, 36 recettes, 15 schémas, 17 décisions, MCD
+  HomeOps-DOSSIER-CERTIFICATION.docx  Dossier de certification
 Conception/
-  Uses-Cases/                     7 vues cas d'usage UML (accès, services, consultation,
-                                  incidents, pilotage, réglages/alertes, énergie)
-  Maquettes/                      7 captures d'écran de référence (thème clair)
-  MCD.md / MCD.svg / MCD.png      MCD Merise v1.2 (14 entités, 12 associations), schéma unique
-homeops-sync.ps1                  Script de synchronisation git multi-postes
-.gitignore                        Fichiers temporaires Office/Windows
+  BDD/                                Modèles Merise : MCD v1.2 (MCD.md, .svg, .png) ; MLD, MPD à venir
+  Cas-utilisation/                    7 vues cas d'usage UML (accès, services, consultation,
+                                      incidents, pilotage, réglages/alertes, énergie)
+  Maquettes/                          7 captures d'écran de référence (thème clair)
+homeops-sync.ps1                      Script de synchronisation git multi-postes
+.gitignore                            Fichiers temporaires Office/Windows
 ```
 
 > Les figures (cas d'usage, MCD, architecture…) sont intégrées dans la spécification ;
-> les PNG de `Uses-Cases/` en sont un export découpé, à garder alignés sur le document.
+> les PNG de `Cas-utilisation/` en sont un export découpé, à garder alignés sur le document.
 
 ## Statut
 
