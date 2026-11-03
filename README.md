@@ -1,22 +1,60 @@
 # HomeOps
 
-Projet HomeOps.
+Application web **auto-hébergée** de supervision de homelab : inventaire des services,
+surveillance de disponibilité (HTTP/HTTPS, TCP, expiration TLS), diagnostic d'incidents,
+pilotage Docker limité (démarrer / arrêter / redémarrer des conteneurs autorisés) et
+suivi de consommation électrique via une prise compatible. Une instance par détenteur,
+un seul compte administrateur.
+
+Ce dépôt contient la **conception** du projet (périmètre, spécification, schémas,
+maquettes), pas encore le code applicatif.
 
 ## Structure
 
-- `Conception/` — documents de conception
-  - `Uses-Cases/` — cas d'usage
-- `HomeOps-PERIMETRE.docx` — périmètre du projet
+```
+HomeOps-PERIMETRE.docx            Fiche de périmètre MVP (règles métier RM01–RM26)
+HomeOps-SPECIFICATIONV1.docx      Spécification fonctionnelle et technique — v1.1 (gelée),
+                                  111 exigences, 36 recettes, 19 schémas, 17 décisions, MCD
+HomeOps-DOSSIER-CERTIFICATION.docx Dossier de certification
+Conception/
+  Uses-Cases/                     7 vues cas d'usage UML (accès, services, consultation,
+                                  incidents, pilotage, réglages/alertes, énergie)
+  Maquettes/                      7 captures d'écran de référence (thème clair)
+homeops-sync.ps1                  Script de synchronisation git multi-postes
+.gitignore                        Fichiers temporaires Office/Windows
+```
+
+> Les figures (cas d'usage, MCD, architecture…) sont intégrées dans la spécification ;
+> les PNG de `Uses-Cases/` en sont un export découpé, à garder alignés sur le document.
+
+## Statut
+
+Spécification **v1.1 gelée** (11 octobre 2026) : fonctionnalités, règles métier, contrats
+et critères de recette. MCD inclus ; **MLD / MPD à produire** lors de la conception détaillée.
+Le gel ne vaut ni implémentation ni test réalisé.
 
 ## Travailler depuis plusieurs postes
 
-Ce dépôt est synchronisé via Git pour permettre de bosser depuis le PC portable et le PC fixe.
+Le dépôt est synchronisé via Git pour alterner entre le PC portable et le PC fixe.
+Les `.docx` / `.png` sont binaires et ne fusionnent pas : **synchroniser au début et à la
+fin de chaque session** pour éviter les conflits.
 
-Sur un nouveau poste :
+### Avec le script (recommandé)
 
-```bash
-git clone https://github.com/Kapetaine-dev/HomeOps.git
-cd HomeOps
+```powershell
+cd C:\Users\...\HomeOps
+.\homeops-sync.ps1                       # pull --rebase + commit + push, en une commande
+.\homeops-sync.ps1 -Message "Ajout MLD"  # message de commit personnalisé
+.\homeops-sync.ps1 -Force                # passer outre l'alerte « fichier Office ouvert »
 ```
 
-Ensuite, workflow habituel : `git pull` avant de commencer, `git add` / `git commit` / `git push` pour partager.
+Le script refuse de committer si un document Office est encore ouvert (verrou `~$...`) ;
+ferme-le puis relance, ou utilise `-Force`.
+
+### À la main
+
+```bash
+git clone https://github.com/Kapetaine-dev/HomeOps.git   # nouveau poste
+git pull            # avant de commencer
+git add . && git commit -m "…" && git push               # pour partager
+```
