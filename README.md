@@ -13,7 +13,7 @@ maquettes), pas encore le code applicatif.
 
 ```
 HomeOps-PERIMETRE.docx            Fiche de périmètre MVP (règles métier RM01–RM26)
-HomeOps-SPECIFICATIONV1.docx      Spécification fonctionnelle et technique — v1.2,
+HomeOps-SPECIFICATIONV1.docx      Spécification fonctionnelle et technique — v1.3,
                                   111 exigences, 36 recettes, 15 schémas, 17 décisions, MCD
 HomeOps-DOSSIER-CERTIFICATION.docx Dossier de certification
 Conception/
@@ -31,7 +31,7 @@ homeops-sync.ps1                  Script de synchronisation git multi-postes
 ## Statut
 
 Spécification **v1.1 gelée** (11 octobre 2026) : fonctionnalités, règles métier, contrats
-et critères de recette. Révision 1.2 (3 novembre 2026) : MCD simplifié, schéma unique FIG04.
+et critères de recette. Révisions 1.2 et 1.3 (3 novembre 2026) : MCD simplifié, schéma unique FIG04, spec allégée.
 **MLD / MPD à produire** lors de la conception détaillée.
 Le gel ne vaut ni implémentation ni test réalisé.
 
