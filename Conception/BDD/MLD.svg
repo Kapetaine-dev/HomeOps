@@ -14,7 +14,7 @@
 <polyline class="lk" marker-end="url(#ar)" points="2315,454 2315,239"/>
 <polyline class="lk" marker-end="url(#ar)" points="2315,828 2315,579"/>
 <polyline class="lk" marker-end="url(#ar)" points="2440,908 2510,908 2510,160 2444,160"/>
-<rect class="ent" x="40" y="80" width="250" height="210"/>
+<rect class="ent" x="40" y="80" width="250" height="227"/>
 <rect class="hd" x="40" y="80" width="250" height="28"/>
 <text x="165.0" y="94.0" class="en" text-anchor="middle" dominant-baseline="central">PARAMETRES_INSTANCE</text>
 <text x="52" y="122.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idInstance</text>
@@ -26,7 +26,8 @@
 <text x="52" y="224.5" class="at" dominant-baseline="central">timeoutDefaut</text>
 <text x="52" y="241.5" class="at" dominant-baseline="central">seuilEchecsDefaut</text>
 <text x="52" y="258.5" class="at" dominant-baseline="central">seuilReussitesDefaut</text>
-<text x="52" y="275.5" class="at" dominant-baseline="central">initialiseLe?</text>
+<text x="52" y="275.5" class="at" dominant-baseline="central">seuilAlerteTls</text>
+<text x="52" y="292.5" class="at" dominant-baseline="central">initialiseLe?</text>
 <rect class="ent" x="470" y="80" width="250" height="108"/>
 <rect class="hd" x="470" y="80" width="250" height="28"/>
 <text x="595.0" y="94.0" class="en" text-anchor="middle" dominant-baseline="central">NOTE</text>
@@ -167,6 +168,6 @@
 <text x="2202" y="938.5" class="at" dominant-baseline="central">qualite</text>
 <text x="2202" y="955.5" class="fk" dominant-baseline="central">#idSource</text>
 <text x="2202" y="972.5" class="fk" dominant-baseline="central">#idEpoque?</text>
-<text x="40" y="1151" class="ti">HomeOps — MLD v1 (Merise)</text>
+<text x="40" y="1151" class="ti">HomeOps — MLD v1.1 (Merise)</text>
 <text x="40" y="1174" class="no">14 relations · 12 clés étrangères · clé primaire soulignée · # clé étrangère (flèche vers la relation référencée) · ? nullable · contraintes : voir MLD.md</text>
 </svg>

@@ -14,11 +14,12 @@ maquettes), pas encore le code applicatif.
 ```
 Docs/
   HomeOps-PERIMETRE.docx              Fiche de périmètre MVP (règles métier RM01–RM26)
-  HomeOps-SPECIFICATION.docx          Spécification fonctionnelle et technique — v1.4,
+  HomeOps-SPECIFICATION.docx          Spécification fonctionnelle et technique — v1.5,
                                       111 exigences, 36 recettes, 16 schémas, 17 décisions, MCD, MLD
   HomeOps-DOSSIER-CERTIFICATION.docx  Dossier de certification
 Conception/
-  BDD/                                Modèles Merise : MCD v1.3, MLD v1 (.md, .svg, .png) ; MPD à venir
+  BDD/                                MCD v1.4, MLD v1.1 (.md, .svg, .png) ;
+                                      MPD v1 PostgreSQL 17 (MPD.sql, MPD.md, MPD-tests.sql)
   Cas-utilisation/                    7 vues cas d'usage UML (accès, services, consultation,
                                       incidents, pilotage, réglages/alertes, énergie)
   Maquettes/                          7 captures d'écran de référence (thème clair)
@@ -31,10 +32,19 @@ homeops-sync.ps1                      Script de synchronisation git multi-postes
 
 ## Statut
 
-Spécification **v1.4 figée** (4 novembre 2026) : fonctionnalités, règles métier, contrats,
-critères de recette, MCD (FIG04) et MLD (FIG20).
-**MPD à produire** lors de la conception détaillée.
-Le gel ne vaut ni implémentation ni test réalisé.
+Spécification **v1.5 figée** (4 novembre 2026) : fonctionnalités, règles métier, contrats,
+critères de recette, MCD (FIG04) et MLD (FIG20). Le MPD (`Conception/BDD/MPD.sql`) fait référence
+pour le schéma ; ses jeux d'essai passent sur PostgreSQL 17. Le gel ne vaut pas implémentation.
+
+Pour rejouer les tests du MPD (Docker requis) :
+
+```powershell
+docker run -d --rm --name homeops-mpd-test -e POSTGRES_PASSWORD=test-only -e POSTGRES_DB=homeops postgres:17
+Start-Sleep 5   # démarrage de PostgreSQL
+Get-Content Conception\BDD\MPD.sql -Raw | docker exec -i homeops-mpd-test psql -U postgres -d homeops -v ON_ERROR_STOP=1 -q
+Get-Content Conception\BDD\MPD-tests.sql -Raw | docker exec -i homeops-mpd-test psql -U postgres -d homeops -q
+docker stop homeops-mpd-test
+```
 
 ## Travailler depuis plusieurs postes
 

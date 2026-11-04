@@ -1,6 +1,6 @@
-# HomeOps — MLD v1 (Merise)
+# HomeOps — MLD v1.1 (Merise)
 
-Dérivé du [MCD v1.3](MCD.md) · schéma : [`MLD.svg`](MLD.svg) · [`MLD.png`](MLD.png).
+Dérivé du [MCD v1.4](MCD.md) · schéma : [`MLD.svg`](MLD.svg) · [`MLD.png`](MLD.png) · traduction physique : [MPD](MPD.md).
 14 relations, 12 clés étrangères, aucune table de jonction.
 
 **Notation** : premier attribut = clé primaire · `#` = clé étrangère · `?` = nullable · `U` = unique.
@@ -11,7 +11,7 @@ les noms physiques (`Service`, `Probe`…) et les tables techniques (sessions, a
 
 | Domaine | Relation |
 |---|---|
-| Instance | **PARAMETRES_INSTANCE** (idInstance, fuseau, emailNotification?, themeDefaut, reductionAnimations, intervalleDefaut, timeoutDefaut, seuilEchecsDefaut, seuilReussitesDefaut, initialiseLe?) |
+| Instance | **PARAMETRES_INSTANCE** (idInstance, fuseau, emailNotification?, themeDefaut, reductionAnimations, intervalleDefaut, timeoutDefaut, seuilEchecsDefaut, seuilReussitesDefaut, seuilAlerteTls, initialiseLe?) |
 | | **ADMINISTRATEUR** (idAdmin, login U, creeLe, derniereConnexion?) |
 | Supervision | **SERVICE** (idService, nom, nomNormalise U, adresse, description?, notesDepannage?, modeSurveillance) |
 | | **SONDE** (idSonde, nom, type, cible, port?, sni?, intervalle, timeout, statutAttendu?, seuilEchecs, seuilReussites, revision, retireeLe?, #idService) |
@@ -72,6 +72,6 @@ les noms physiques (`Service`, `Probe`…) et les tables techniques (sessions, a
 - CIF-5 est garantie par la structure (FK composite) plutôt que par du code.
 - ADMINISTRATEUR et PARAMETRES_INSTANCE sans FK : singletons ; l'acteur d'une action est tracé par l'audit (MPD).
 
-## Reporté au MPD
+## Traité dans le MPD
 - Unicités techniques : `eventKey` + destinataire de la file d'envoi (REQ-N01), `executionId` des résultats (REQ-P10).
 - Tables techniques de §13.1 (sessions, CheckRequest, ProbeState, AuditEvent, EnergyInterval, WorkerHeartbeat), types, index de lecture.

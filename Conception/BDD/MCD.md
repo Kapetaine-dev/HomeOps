@@ -1,4 +1,4 @@
-# HomeOps — MCD v1.3 (Merise)
+# HomeOps — MCD v1.4 (Merise)
 
 Schéma unifié : [`MCD.svg`](MCD.svg) · [`MCD.png`](MCD.png).
 14 entités, 12 associations, aucune association n,n. Attributs techniques (verrous, empreintes,
@@ -10,7 +10,7 @@ Notation : premier attribut = identifiant · cardinalités `(min,max)` côté en
 
 | Domaine | Entité | Attributs |
 |---|---|---|
-| Instance | PARAMETRES_INSTANCE | idInstance, fuseau, emailNotification, themeDefaut, reductionAnimations, intervalleDefaut, timeoutDefaut, seuilEchecsDefaut, seuilReussitesDefaut, initialiseLe |
+| Instance | PARAMETRES_INSTANCE | idInstance, fuseau, emailNotification, themeDefaut, reductionAnimations, intervalleDefaut, timeoutDefaut, seuilEchecsDefaut, seuilReussitesDefaut, seuilAlerteTls, initialiseLe |
 | | ADMINISTRATEUR | idAdmin, login, creeLe, derniereConnexion |
 | Supervision | SERVICE | idService, nom, adresse, description, notesDepannage, modeSurveillance |
 | | SONDE | idSonde, nom, type, cible, port, sni, intervalle, timeout, statutAttendu, seuilEchecs, seuilReussites, revision, retireeLe |
@@ -62,6 +62,9 @@ Notation : premier attribut = identifiant · cardinalités `(min,max)` côté en
 | SINGL | PARAMETRES_INSTANCE : 1 occurrence ; ADMINISTRATEUR : 0 avant initialisation, 1 après |
 | LIMITES | Au plus 3 SONDE non retirées par SERVICE (borne 0,3 de `equiper`) ; au plus 20 SERVICE |
 | UNIQ | SERVICE.nom unique (insensible à la casse) ; RELEVE_ENERGIE unique par (source, observeLe) |
+
+## Changements v1.4 (MPD)
+- PARAMETRES_INSTANCE.`seuilAlerteTls` : seuil d'alerte d'expiration TLS (§7.2, RM09), oublié jusqu'ici.
 
 ## Changements v1.3 (revue du MLD)
 - SONDE.`retireeLe` : retrait logique, pour ne pas effacer l'historique d'incidents (§13.3).
