@@ -22,9 +22,9 @@ EXCEPTION WHEN others THEN
 END $$;
 
 -- Données de base
-INSERT INTO instance_settings (id, schema_version) VALUES (1, '1');
-INSERT INTO admin_account (id, login, normalized_login, password_hash, security_stamp, created_at)
-  VALUES (1, 'Admin', 'admin', 'hash', gen_random_uuid(), now());
+INSERT INTO instance_settings (id) VALUES (1);
+INSERT INTO admin_account (id, login, normalized_login, password_hash, created_at)
+  VALUES (1, 'Admin', 'admin', 'hash', now());
 INSERT INTO service (id, name, normalized_name, address) VALUES
   ('00000000-0000-0000-0000-0000000000a1', 'Nas', 'nas', 'http://nas.lan'),
   ('00000000-0000-0000-0000-0000000000a2', 'Wiki', 'wiki', 'http://wiki.lan');
@@ -34,13 +34,14 @@ INSERT INTO probe (id, service_id, name, type, target, port, sni, interval_secon
   ('00000000-0000-0000-0000-0000000000b2', '00000000-0000-0000-0000-0000000000a1', 'cert', 'TLS', 'nas.lan', 443, 'nas.lan', 86400, 5, 3, 2);
 
 -- Singletons
-SELECT pg_temp.must_fail('SINGL paramètres id 2', $$INSERT INTO instance_settings (id, schema_version) VALUES (2, '1')$$);
-SELECT pg_temp.must_fail('SINGL admin id 2', $$INSERT INTO admin_account VALUES (2, 'b', 'b', 'h', gen_random_uuid(), 0, NULL, now(), NULL)$$);
+SELECT pg_temp.must_fail('SINGL paramètres id 2', $$INSERT INTO instance_settings (id) VALUES (2)$$);
+SELECT pg_temp.must_fail('SINGL admin id 2', $$INSERT INTO admin_account VALUES (2, 'b', 'b', 'h', 0, NULL, now(), NULL)$$);
 SELECT pg_temp.must_fail('Email avec CRLF', $$UPDATE instance_settings SET notification_email = E'a@b.fr\r\nBcc: x'$$);
 
 -- Sessions
 SELECT pg_temp.must_fail('Session ADMIN sans compte', $$INSERT INTO auth_session VALUES ('\x01', 'ADMIN', NULL, NULL, now(), now(), now(), now() + interval '12 hours', NULL)$$);
 SELECT pg_temp.must_fail('Session KIOSK sans version', $$INSERT INTO auth_session VALUES ('\x02', 'KIOSK', NULL, NULL, now(), now(), now(), now() + interval '30 days', NULL)$$);
+SELECT pg_temp.must_fail('Session ADMIN avec version kiosque', $$INSERT INTO auth_session VALUES ('\x04', 'ADMIN', 1, 'v1', now(), now(), now(), now() + interval '12 hours', NULL)$$);
 SELECT pg_temp.must_pass('Session KIOSK valide', $$INSERT INTO auth_session VALUES ('\x03', 'KIOSK', NULL, 'v1', now(), now(), now(), now() + interval '30 days', NULL)$$);
 
 -- Services et sondes
@@ -51,6 +52,10 @@ SELECT pg_temp.must_fail('HTTP intervalle 10 s', $$INSERT INTO probe (id, servic
 SELECT pg_temp.must_fail('TLS intervalle 60 s', $$INSERT INTO probe (id, service_id, name, type, target, port, interval_seconds, timeout_seconds, fail_threshold, success_threshold) VALUES (gen_random_uuid(), '00000000-0000-0000-0000-0000000000a1', 'x', 'TLS', 'x', 443, 60, 5, 3, 2)$$);
 SELECT pg_temp.must_fail('SNI sur HTTP', $$INSERT INTO probe (id, service_id, name, type, target, sni, interval_seconds, timeout_seconds, expected_status, fail_threshold, success_threshold) VALUES (gen_random_uuid(), '00000000-0000-0000-0000-0000000000a1', 'x', 'HTTP', 'http://x', 'x', 60, 5, 200, 3, 2)$$);
 SELECT pg_temp.must_fail('Seuil 11', $$UPDATE probe SET fail_threshold = 11 WHERE type = 'HTTP'$$);
+
+-- État des sondes : séries longues (une sonde saine à 60 s dépasse 32 767 PASS en 23 jours)
+INSERT INTO probe_state (probe_id) VALUES ('00000000-0000-0000-0000-0000000000b1');
+SELECT pg_temp.must_pass('Série de 100 000 réussites', $$UPDATE probe_state SET success_streak = 100000$$);
 
 -- Résultats et contrôles immédiats
 INSERT INTO probe_result (id, execution_id, probe_id, probe_revision, mode_revision, started_at, observed_at, duration_ms, outcome)
@@ -63,6 +68,7 @@ SELECT pg_temp.must_fail('Deux contrôles actifs', $$INSERT INTO check_request (
 INSERT INTO incident (id, probe_id, probe_revision, target_snapshot, type_snapshot, status, first_failure_at, opened_at)
   VALUES ('00000000-0000-0000-0000-0000000000d1', '00000000-0000-0000-0000-0000000000b1', 1, 'http://nas.lan', 'HTTP', 'OPEN', now(), now());
 SELECT pg_temp.must_fail('CIF-1 deux incidents actifs', $$INSERT INTO incident (id, probe_id, probe_revision, target_snapshot, type_snapshot, status, first_failure_at, opened_at) VALUES (gen_random_uuid(), '00000000-0000-0000-0000-0000000000b1', 1, 'x', 'HTTP', 'OPEN', now(), now())$$);
+SELECT pg_temp.must_fail('OPEN avec date d''acquittement', $$UPDATE incident SET acknowledged_at = now() WHERE status = 'OPEN'$$);
 SELECT pg_temp.must_fail('ACK sans date', $$UPDATE incident SET status = 'ACKNOWLEDGED'$$);
 SELECT pg_temp.must_fail('RESOLVED sans date', $$UPDATE incident SET status = 'RESOLVED'$$);
 SELECT pg_temp.must_fail('CLOSED sans motif', $$UPDATE incident SET status = 'CLOSED', closed_at = now()$$);
@@ -74,13 +80,14 @@ SELECT pg_temp.must_pass('Clôture RESOLVED', $$UPDATE incident SET status = 'RE
 SELECT pg_temp.must_pass('Nouvel incident après rétablissement', $$INSERT INTO incident (id, probe_id, probe_revision, target_snapshot, type_snapshot, status, first_failure_at, opened_at) VALUES (gen_random_uuid(), '00000000-0000-0000-0000-0000000000b1', 1, 'x', 'HTTP', 'OPEN', now(), now())$$);
 
 -- Notifications
-SELECT pg_temp.must_pass('NOTIF TEST', $$INSERT INTO notification_outbox (id, event_key, recipient, type, created_at) VALUES (gen_random_uuid(), 'test-1', 'a@b.fr', 'TEST', now())$$);
-SELECT pg_temp.must_fail('NOTIF TEST avec sonde', $$INSERT INTO notification_outbox (id, event_key, recipient, type, probe_id, created_at) VALUES (gen_random_uuid(), 'test-2', 'a@b.fr', 'TEST', '00000000-0000-0000-0000-0000000000b2', now())$$);
-SELECT pg_temp.must_pass('NOTIF TLS', $$INSERT INTO notification_outbox (id, event_key, recipient, type, probe_id, created_at) VALUES (gen_random_uuid(), 'tls-1', 'a@b.fr', 'TLS_WARNING', '00000000-0000-0000-0000-0000000000b2', now())$$);
-SELECT pg_temp.must_fail('NOTIF TLS sans sonde', $$INSERT INTO notification_outbox (id, event_key, recipient, type, created_at) VALUES (gen_random_uuid(), 'tls-2', 'a@b.fr', 'TLS_WARNING', now())$$);
-SELECT pg_temp.must_pass('NOTIF ouverture', $$INSERT INTO notification_outbox (id, event_key, recipient, type, incident_id, created_at) VALUES (gen_random_uuid(), 'open-1', 'a@b.fr', 'INCIDENT_OPENED', '00000000-0000-0000-0000-0000000000d1', now())$$);
-SELECT pg_temp.must_fail('NOTIF X sonde et incident', $$INSERT INTO notification_outbox (id, event_key, recipient, type, probe_id, incident_id, created_at) VALUES (gen_random_uuid(), 'open-2', 'a@b.fr', 'INCIDENT_OPENED', '00000000-0000-0000-0000-0000000000b1', '00000000-0000-0000-0000-0000000000d1', now())$$);
-SELECT pg_temp.must_fail('NOTIF doublon événement', $$INSERT INTO notification_outbox (id, event_key, recipient, type, incident_id, created_at) VALUES (gen_random_uuid(), 'open-1', 'a@b.fr', 'INCIDENT_OPENED', '00000000-0000-0000-0000-0000000000d1', now())$$);
+SELECT pg_temp.must_pass('NOTIF TEST', $$INSERT INTO notification_outbox (id, event_key, recipient, type, next_attempt_at, created_at) VALUES (gen_random_uuid(), 'test-1', 'a@b.fr', 'TEST', now(), now())$$);
+SELECT pg_temp.must_fail('NOTIF TEST avec sonde', $$INSERT INTO notification_outbox (id, event_key, recipient, type, probe_id, next_attempt_at, created_at) VALUES (gen_random_uuid(), 'test-2', 'a@b.fr', 'TEST', '00000000-0000-0000-0000-0000000000b2', now(), now())$$);
+SELECT pg_temp.must_pass('NOTIF TLS', $$INSERT INTO notification_outbox (id, event_key, recipient, type, probe_id, next_attempt_at, created_at) VALUES (gen_random_uuid(), 'tls-1', 'a@b.fr', 'TLS_WARNING', '00000000-0000-0000-0000-0000000000b2', now(), now())$$);
+SELECT pg_temp.must_fail('NOTIF TLS sans sonde', $$INSERT INTO notification_outbox (id, event_key, recipient, type, next_attempt_at, created_at) VALUES (gen_random_uuid(), 'tls-2', 'a@b.fr', 'TLS_WARNING', now(), now())$$);
+SELECT pg_temp.must_pass('NOTIF ouverture', $$INSERT INTO notification_outbox (id, event_key, recipient, type, incident_id, next_attempt_at, created_at) VALUES (gen_random_uuid(), 'open-1', 'a@b.fr', 'INCIDENT_OPENED', '00000000-0000-0000-0000-0000000000d1', now(), now())$$);
+SELECT pg_temp.must_fail('NOTIF X sonde et incident', $$INSERT INTO notification_outbox (id, event_key, recipient, type, probe_id, incident_id, next_attempt_at, created_at) VALUES (gen_random_uuid(), 'open-2', 'a@b.fr', 'INCIDENT_OPENED', '00000000-0000-0000-0000-0000000000b1', '00000000-0000-0000-0000-0000000000d1', now(), now())$$);
+SELECT pg_temp.must_fail('NOTIF doublon événement', $$INSERT INTO notification_outbox (id, event_key, recipient, type, incident_id, next_attempt_at, created_at) VALUES (gen_random_uuid(), 'open-1', 'a@b.fr', 'INCIDENT_OPENED', '00000000-0000-0000-0000-0000000000d1', now(), now())$$);
+SELECT pg_temp.must_fail('NOTIF en attente sans échéance', $$INSERT INTO notification_outbox (id, event_key, recipient, type, created_at) VALUES (gen_random_uuid(), 'test-3', 'a@b.fr', 'TEST', now())$$);
 SELECT pg_temp.must_fail('NOTIF 4 tentatives', $$UPDATE notification_outbox SET attempts = 4 WHERE event_key = 'open-1'$$);
 
 -- Maintenance
@@ -123,7 +130,7 @@ INSERT INTO energy_reading (id, source_id, epoch_id, observed_at, power_w, total
   ('00000000-0000-0000-0000-000000000032', '00000000-0000-0000-0000-000000000011', '00000000-0000-0000-0000-000000000021', now(), 86, 12060, 'VALID');
 SELECT pg_temp.must_fail('UNIQ relevé source/date', $$INSERT INTO energy_reading (id, source_id, epoch_id, observed_at, power_w, total_wh, quality) SELECT gen_random_uuid(), source_id, epoch_id, observed_at, 1, 1, 'VALID' FROM energy_reading WHERE id = '00000000-0000-0000-0000-000000000031'$$);
 SELECT pg_temp.must_pass('Intervalle valide', $$INSERT INTO energy_interval VALUES (gen_random_uuid(), '00000000-0000-0000-0000-000000000011', '00000000-0000-0000-0000-000000000021', '00000000-0000-0000-0000-000000000031', '00000000-0000-0000-0000-000000000032', now() - interval '60 seconds', now(), 60, 'VALID', true)$$);
-SELECT pg_temp.must_fail('Intervalle hors époque', $$INSERT INTO energy_interval VALUES (gen_random_uuid(), '00000000-0000-0000-0000-000000000012', '00000000-0000-0000-0000-000000000022', '00000000-0000-0000-0000-000000000032', '00000000-0000-0000-0000-000000000031', now() - interval '60 seconds', now(), 60, 'VALID', true)$$);
+SELECT pg_temp.must_fail('Intervalle époque d''une autre source', $$INSERT INTO energy_interval VALUES (gen_random_uuid(), '00000000-0000-0000-0000-000000000011', '00000000-0000-0000-0000-000000000022', '00000000-0000-0000-0000-000000000032', '00000000-0000-0000-0000-000000000031', now() - interval '60 seconds', now(), 60, 'VALID', true)$$);
 SELECT pg_temp.must_fail('Purge relevé référencé', $$DELETE FROM energy_reading WHERE id = '00000000-0000-0000-0000-000000000031'$$);
 SELECT pg_temp.must_fail('Purge époque référencée', $$DELETE FROM energy_epoch WHERE id = '00000000-0000-0000-0000-000000000021'$$);
 SELECT pg_temp.must_fail('Suppression source référencée', $$DELETE FROM energy_source WHERE id = '00000000-0000-0000-0000-000000000011'$$);
@@ -142,6 +149,13 @@ INSERT INTO t_result SELECT 'Cascade complète',
   'restes : ' || (SELECT count(*) FROM probe) || ' sondes, ' || (SELECT count(*) FROM incident) || ' incidents';
 INSERT INTO t_result SELECT 'TEST et audit conservés',
   (SELECT count(*) FROM notification_outbox WHERE type = 'TEST') = 1 AND (SELECT count(*) FROM audit_event) = 1, '';
+
+-- Tous les objets portent un nom explicite (parité avec EF Core)
+INSERT INTO t_result SELECT 'Contraintes nommées', count(*) = 0, string_agg(conname, ', ')
+  FROM pg_constraint c JOIN pg_namespace n ON n.oid = c.connamespace
+  WHERE n.nspname = 'public' AND conname !~ '^(pk|fk|ak|ck)_';
+INSERT INTO t_result SELECT 'Index nommés', count(*) = 0, string_agg(indexname, ', ')
+  FROM pg_indexes WHERE schemaname = 'public' AND indexname !~ '^(pk|ak|ix)_';
 
 \pset footer off
 SELECT ok, name, detail FROM t_result ORDER BY ok, name;

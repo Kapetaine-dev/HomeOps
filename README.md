@@ -14,12 +14,12 @@ maquettes), pas encore le code applicatif.
 ```
 Docs/
   HomeOps-PERIMETRE.docx              Fiche de périmètre MVP (règles métier RM01–RM26)
-  HomeOps-SPECIFICATION.docx          Spécification fonctionnelle et technique — v1.5,
+  HomeOps-SPECIFICATION.docx          Spécification fonctionnelle et technique — v1.6,
                                       111 exigences, 36 recettes, 16 schémas, 17 décisions, MCD, MLD
   HomeOps-DOSSIER-CERTIFICATION.docx  Dossier de certification
 Conception/
   BDD/                                MCD v1.4, MLD v1.1 (.md, .svg, .png) ;
-                                      MPD v1 PostgreSQL 17 (MPD.sql, MPD.md, MPD-tests.sql)
+                                      MPD v1.1 PostgreSQL 17 (MPD.sql, MPD.md, MPD-tests.sql)
   Cas-utilisation/                    7 vues cas d'usage UML (accès, services, consultation,
                                       incidents, pilotage, réglages/alertes, énergie)
   Maquettes/                          7 captures d'écran de référence (thème clair)
@@ -32,7 +32,7 @@ homeops-sync.ps1                      Script de synchronisation git multi-postes
 
 ## Statut
 
-Spécification **v1.5 figée** (4 novembre 2026) : fonctionnalités, règles métier, contrats,
+Spécification **v1.6 figée** (4 novembre 2026) : fonctionnalités, règles métier, contrats,
 critères de recette, MCD (FIG04) et MLD (FIG20). Le MPD (`Conception/BDD/MPD.sql`) fait référence
 pour le schéma ; ses jeux d'essai passent sur PostgreSQL 17. Le gel ne vaut pas implémentation.
 
