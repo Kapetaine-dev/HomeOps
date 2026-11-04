@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1151" viewBox="0 0 2560 1151" font-family="Segoe UI, Arial, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1168" viewBox="0 0 2560 1168" font-family="Segoe UI, Arial, sans-serif">
 <style>.ent{fill:#fff;stroke:#1f3a5f;stroke-width:1.4}.hd{fill:#dce8f5;stroke:#1f3a5f;stroke-width:1.4}.en{font-size:13px;font-weight:700;fill:#1f3a5f}.at{font-size:12px;fill:#222}.lk{fill:none;stroke:#555;stroke-width:1.2}.as{fill:#fff6e0;stroke:#a86b00;stroke-width:1.4}.an{font-size:12px;font-weight:600;fill:#6b4400}.aa{font-size:11px;fill:#6b4400}.card{font-size:12px;font-weight:600;fill:#b00020}.ti{font-size:16px;font-weight:700;fill:#1f3a5f}.no{font-size:12px;fill:#555}</style>
-<rect width="2560" height="1151" fill="#fff"/>
-<polyline points="800,528 813,611 827,694" fill="none" stroke="#a86b00" stroke-dasharray="4 3"/>
-<polyline class="lk" points="1330,895 700,932"/>
-<text x="1307" y="885" class="card" text-anchor="middle" dominant-baseline="central">0,3</text>
-<text x="723" y="942" class="card" text-anchor="middle" dominant-baseline="central">1,1</text>
-<polyline class="lk" points="470,829 247,616"/>
-<text x="462" y="806" class="card" text-anchor="middle" dominant-baseline="central">0,n</text>
-<text x="255" y="639" class="card" text-anchor="middle" dominant-baseline="central">1,1</text>
+<rect width="2560" height="1168" fill="#fff"/>
+<polyline points="800,528 814,612 827,697" fill="none" stroke="#a86b00" stroke-dasharray="4 3"/>
+<polyline class="lk" points="1330,896 700,940"/>
+<text x="1307" y="887" class="card" text-anchor="middle" dominant-baseline="central">0,3</text>
+<text x="723" y="949" class="card" text-anchor="middle" dominant-baseline="central">1,1</text>
+<polyline class="lk" points="470,835 245,616"/>
+<text x="462" y="812" class="card" text-anchor="middle" dominant-baseline="central">0,n</text>
+<text x="253" y="639" class="card" text-anchor="middle" dominant-baseline="central">1,1</text>
 <polyline class="lk" points="585,817 585,667"/>
 <text x="596" y="795" class="card" text-anchor="middle" dominant-baseline="central">0,n</text>
 <text x="574" y="689" class="card" text-anchor="middle" dominant-baseline="central">1,1</text>
@@ -17,18 +17,18 @@
 <polyline class="lk" points="700,540 900,516"/>
 <text x="723" y="548" class="card" text-anchor="middle" dominant-baseline="central">0,n</text>
 <text x="877" y="508" class="card" text-anchor="middle" dominant-baseline="central">0,1</text>
-<polyline class="lk" points="700,822 953,565"/>
-<text x="723" y="814" class="card" text-anchor="middle" dominant-baseline="central">0,n</text>
-<text x="930" y="573" class="card" text-anchor="middle" dominant-baseline="central">0,1</text>
+<polyline class="lk" points="700,828 955,565"/>
+<text x="723" y="820" class="card" text-anchor="middle" dominant-baseline="central">0,n</text>
+<text x="931" y="573" class="card" text-anchor="middle" dominant-baseline="central">0,1</text>
 <polyline class="lk" points="1524,817 1805,565"/>
 <text x="1548" y="811" class="card" text-anchor="middle" dominant-baseline="central">0,n</text>
 <text x="1782" y="571" class="card" text-anchor="middle" dominant-baseline="central">1,1</text>
 <polyline class="lk" points="1445,817 1445,582"/>
 <text x="1456" y="795" class="card" text-anchor="middle" dominant-baseline="central">0,n</text>
 <text x="1434" y="604" class="card" text-anchor="middle" dominant-baseline="central">1,1</text>
-<polyline class="lk" points="1445,440 1445,239"/>
+<polyline class="lk" points="1445,440 1445,273"/>
 <text x="1456" y="418" class="card" text-anchor="middle" dominant-baseline="central">0,n</text>
-<text x="1434" y="261" class="card" text-anchor="middle" dominant-baseline="central">1,1</text>
+<text x="1434" y="295" class="card" text-anchor="middle" dominant-baseline="central">1,1</text>
 <polyline class="lk" points="2305,239 2305,440"/>
 <text x="2294" y="261" class="card" text-anchor="middle" dominant-baseline="central">0,n</text>
 <text x="2316" y="418" class="card" text-anchor="middle" dominant-baseline="central">1,1</text>
@@ -38,32 +38,32 @@
 <polyline class="lk" points="2305,548 2305,817"/>
 <text x="2294" y="570" class="card" text-anchor="middle" dominant-baseline="central">0,n</text>
 <text x="2316" y="795" class="card" text-anchor="middle" dominant-baseline="central">0,1</text>
-<ellipse class="as" cx="1015" cy="914" rx="52" ry="17"/>
-<text x="1015" y="914" class="an" text-anchor="middle" dominant-baseline="central">equiper</text>
-<ellipse class="as" cx="359" cy="723" rx="52" ry="17"/>
-<text x="359" y="723" class="an" text-anchor="middle" dominant-baseline="central">produire</text>
+<ellipse class="as" cx="1015" cy="918" rx="52" ry="17"/>
+<text x="1015" y="918" class="an" text-anchor="middle" dominant-baseline="central">equiper</text>
+<ellipse class="as" cx="358" cy="726" rx="52" ry="17"/>
+<text x="358" y="726" class="an" text-anchor="middle" dominant-baseline="central">produire</text>
 <ellipse class="as" cx="585" cy="742" rx="52" ry="17"/>
 <text x="585" y="742" class="an" text-anchor="middle" dominant-baseline="central">detecter</text>
 <ellipse class="as" cx="585" cy="306" rx="52" ry="17"/>
 <text x="585" y="306" class="an" text-anchor="middle" dominant-baseline="central">documenter</text>
 <ellipse class="as" cx="800" cy="528" rx="52" ry="17"/>
 <text x="800" y="528" class="an" text-anchor="middle" dominant-baseline="central">signaler</text>
-<ellipse class="as" cx="827" cy="694" rx="52" ry="17"/>
-<text x="827" y="694" class="an" text-anchor="middle" dominant-baseline="central">concerner</text>
+<ellipse class="as" cx="827" cy="697" rx="52" ry="17"/>
+<text x="827" y="697" class="an" text-anchor="middle" dominant-baseline="central">concerner</text>
 <ellipse class="as" cx="1665" cy="691" rx="52" ry="17"/>
 <text x="1665" y="691" class="an" text-anchor="middle" dominant-baseline="central">planifier</text>
 <ellipse class="as" cx="1445" cy="700" rx="52" ry="17"/>
 <text x="1445" y="700" class="an" text-anchor="middle" dominant-baseline="central">rattacher</text>
-<ellipse class="as" cx="1445" cy="340" rx="52" ry="17"/>
-<text x="1445" y="340" class="an" text-anchor="middle" dominant-baseline="central">cibler</text>
+<ellipse class="as" cx="1445" cy="356" rx="52" ry="17"/>
+<text x="1445" y="356" class="an" text-anchor="middle" dominant-baseline="central">cibler</text>
 <ellipse class="as" cx="2305" cy="340" rx="52" ry="17"/>
 <text x="2305" y="340" class="an" text-anchor="middle" dominant-baseline="central">ouvrir</text>
 <ellipse class="as" cx="2490" cy="520" rx="52" ry="17"/>
 <text x="2490" y="520" class="an" text-anchor="middle" dominant-baseline="central">mesurer</text>
 <ellipse class="as" cx="2305" cy="682" rx="52" ry="17"/>
 <text x="2305" y="682" class="an" text-anchor="middle" dominant-baseline="central">regrouper</text>
-<circle cx="813" cy="611" r="11" fill="#fff" stroke="#a86b00" stroke-width="1.4"/>
-<text x="813" y="611" class="an" text-anchor="middle" dominant-baseline="central">X</text>
+<circle cx="814" cy="612" r="11" fill="#fff" stroke="#a86b00" stroke-width="1.4"/>
+<text x="814" y="612" class="an" text-anchor="middle" dominant-baseline="central">X</text>
 <rect class="ent" x="40" y="80" width="230" height="210"/>
 <rect class="hd" x="40" y="80" width="230" height="28"/>
 <text x="155.0" y="94.0" class="en" text-anchor="middle" dominant-baseline="central">PARAMETRES_INSTANCE</text>
@@ -90,7 +90,7 @@
 <text x="912" y="139.5" class="at" dominant-baseline="central">login</text>
 <text x="912" y="156.5" class="at" dominant-baseline="central">creeLe</text>
 <text x="912" y="173.5" class="at" dominant-baseline="central">derniereConnexion</text>
-<rect class="ent" x="1330" y="80" width="230" height="159"/>
+<rect class="ent" x="1330" y="80" width="230" height="193"/>
 <rect class="hd" x="1330" y="80" width="230" height="28"/>
 <text x="1445.0" y="94.0" class="en" text-anchor="middle" dominant-baseline="central">INTERVENTION</text>
 <text x="1342" y="122.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idIntervention</text>
@@ -100,6 +100,8 @@
 <text x="1342" y="190.5" class="at" dominant-baseline="central">lanceeLe</text>
 <text x="1342" y="207.5" class="at" dominant-baseline="central">termineeLe</text>
 <text x="1342" y="224.5" class="at" dominant-baseline="central">codeResultat</text>
+<text x="1342" y="241.5" class="at" dominant-baseline="central">verrouLeveLe</text>
+<text x="1342" y="258.5" class="at" dominant-baseline="central">motifLevee</text>
 <rect class="ent" x="2190" y="80" width="230" height="159"/>
 <rect class="hd" x="2190" y="80" width="230" height="28"/>
 <text x="2305.0" y="94.0" class="en" text-anchor="middle" dominant-baseline="central">SOURCE_ENERGIE</text>
@@ -167,7 +169,7 @@
 <text x="2202" y="499.5" class="at" dominant-baseline="central">debutLe</text>
 <text x="2202" y="516.5" class="at" dominant-baseline="central">finLe</text>
 <text x="2202" y="533.5" class="at" dominant-baseline="central">motifOuverture</text>
-<rect class="ent" x="470" y="817" width="230" height="244"/>
+<rect class="ent" x="470" y="817" width="230" height="261"/>
 <rect class="hd" x="470" y="817" width="230" height="28"/>
 <text x="585.0" y="831.0" class="en" text-anchor="middle" dominant-baseline="central">SONDE</text>
 <text x="482" y="859.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idSonde</text>
@@ -182,6 +184,7 @@
 <text x="482" y="1012.5" class="at" dominant-baseline="central">seuilEchecs</text>
 <text x="482" y="1029.5" class="at" dominant-baseline="central">seuilReussites</text>
 <text x="482" y="1046.5" class="at" dominant-baseline="central">revision</text>
+<text x="482" y="1063.5" class="at" dominant-baseline="central">retireeLe</text>
 <rect class="ent" x="1330" y="817" width="230" height="142"/>
 <rect class="hd" x="1330" y="817" width="230" height="28"/>
 <text x="1445.0" y="831.0" class="en" text-anchor="middle" dominant-baseline="central">SERVICE</text>
@@ -199,6 +202,6 @@
 <text x="2202" y="893.5" class="at" dominant-baseline="central">puissanceW</text>
 <text x="2202" y="910.5" class="at" dominant-baseline="central">compteurWh</text>
 <text x="2202" y="927.5" class="at" dominant-baseline="central">qualite</text>
-<text x="40" y="1106" class="ti">HomeOps — MCD v1.2 (Merise)</text>
-<text x="40" y="1129" class="no">14 entités · 12 associations · identifiant souligné · cardinalités (min,max) côté entité · X = exclusion signaler/concerner · contraintes CIF : voir MCD.md</text>
+<text x="40" y="1123" class="ti">HomeOps — MCD v1.3 (Merise)</text>
+<text x="40" y="1146" class="no">14 entités · 12 associations · identifiant souligné · cardinalités (min,max) côté entité · X = exclusion signaler/concerner · contraintes CIF : voir MCD.md</text>
 </svg>

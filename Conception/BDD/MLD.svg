@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2580" height="1196" viewBox="0 0 2580 1196" font-family="Segoe UI, Arial, sans-serif">
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0L10 5L0 10z" fill="#555"/></marker></defs>
+<style>.ent{fill:#fff;stroke:#1f3a5f;stroke-width:1.4}.hd{fill:#dce8f5;stroke:#1f3a5f;stroke-width:1.4}.en{font-size:13px;font-weight:700;fill:#1f3a5f}.at{font-size:12px;fill:#222}.fk{font-size:12px;fill:#a86b00;font-weight:600}.lk{fill:none;stroke:#555;stroke-width:1.2}.ti{font-size:16px;font-weight:700;fill:#1f3a5f}.no{font-size:12px;fill:#555}</style>
+<rect width="2580" height="1196" fill="#fff"/>
+<polyline class="lk" marker-end="url(#ar)" points="595,188 595,454"/>
+<polyline class="lk" marker-end="url(#ar)" points="1455,324 1455,454"/>
+<polyline class="lk" marker-end="url(#ar)" points="265,647 470,846"/>
+<polyline class="lk" marker-end="url(#ar)" points="595,698 595,828"/>
+<polyline class="lk" marker-end="url(#ar)" points="900,546 720,564"/>
+<polyline class="lk" marker-end="url(#ar)" points="946,613 720,841"/>
+<polyline class="lk" marker-end="url(#ar)" points="1455,613 1455,828"/>
+<polyline class="lk" marker-end="url(#ar)" points="1805,596 1544,828"/>
+<polyline class="lk" marker-end="url(#ar)" points="720,958 1330,916"/>
+<polyline class="lk" marker-end="url(#ar)" points="2315,454 2315,239"/>
+<polyline class="lk" marker-end="url(#ar)" points="2315,828 2315,579"/>
+<polyline class="lk" marker-end="url(#ar)" points="2440,908 2510,908 2510,160 2444,160"/>
+<rect class="ent" x="40" y="80" width="250" height="210"/>
+<rect class="hd" x="40" y="80" width="250" height="28"/>
+<text x="165.0" y="94.0" class="en" text-anchor="middle" dominant-baseline="central">PARAMETRES_INSTANCE</text>
+<text x="52" y="122.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idInstance</text>
+<text x="52" y="139.5" class="at" dominant-baseline="central">fuseau</text>
+<text x="52" y="156.5" class="at" dominant-baseline="central">emailNotification?</text>
+<text x="52" y="173.5" class="at" dominant-baseline="central">themeDefaut</text>
+<text x="52" y="190.5" class="at" dominant-baseline="central">reductionAnimations</text>
+<text x="52" y="207.5" class="at" dominant-baseline="central">intervalleDefaut</text>
+<text x="52" y="224.5" class="at" dominant-baseline="central">timeoutDefaut</text>
+<text x="52" y="241.5" class="at" dominant-baseline="central">seuilEchecsDefaut</text>
+<text x="52" y="258.5" class="at" dominant-baseline="central">seuilReussitesDefaut</text>
+<text x="52" y="275.5" class="at" dominant-baseline="central">initialiseLe?</text>
+<rect class="ent" x="470" y="80" width="250" height="108"/>
+<rect class="hd" x="470" y="80" width="250" height="28"/>
+<text x="595.0" y="94.0" class="en" text-anchor="middle" dominant-baseline="central">NOTE</text>
+<text x="482" y="122.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idNote</text>
+<text x="482" y="139.5" class="at" dominant-baseline="central">texte</text>
+<text x="482" y="156.5" class="at" dominant-baseline="central">creeeLe</text>
+<text x="482" y="173.5" class="fk" dominant-baseline="central">#idIncident</text>
+<rect class="ent" x="900" y="80" width="250" height="108"/>
+<rect class="hd" x="900" y="80" width="250" height="28"/>
+<text x="1025.0" y="94.0" class="en" text-anchor="middle" dominant-baseline="central">ADMINISTRATEUR</text>
+<text x="912" y="122.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idAdmin</text>
+<text x="912" y="139.5" class="at" dominant-baseline="central">login</text>
+<text x="912" y="156.5" class="at" dominant-baseline="central">creeLe</text>
+<text x="912" y="173.5" class="at" dominant-baseline="central">derniereConnexion?</text>
+<rect class="ent" x="1330" y="80" width="250" height="244"/>
+<rect class="hd" x="1330" y="80" width="250" height="28"/>
+<text x="1455.0" y="94.0" class="en" text-anchor="middle" dominant-baseline="central">INTERVENTION</text>
+<text x="1342" y="122.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idIntervention</text>
+<text x="1342" y="139.5" class="at" dominant-baseline="central">action</text>
+<text x="1342" y="156.5" class="at" dominant-baseline="central">etat</text>
+<text x="1342" y="173.5" class="at" dominant-baseline="central">demandeeLe</text>
+<text x="1342" y="190.5" class="at" dominant-baseline="central">lanceeLe?</text>
+<text x="1342" y="207.5" class="at" dominant-baseline="central">termineeLe?</text>
+<text x="1342" y="224.5" class="at" dominant-baseline="central">codeResultat?</text>
+<text x="1342" y="241.5" class="at" dominant-baseline="central">verrouLeveLe?</text>
+<text x="1342" y="258.5" class="at" dominant-baseline="central">motifLevee?</text>
+<text x="1342" y="275.5" class="fk" dominant-baseline="central">#idLiaison</text>
+<text x="1342" y="292.5" class="fk" dominant-baseline="central">#refConnecteur</text>
+<text x="1342" y="309.5" class="fk" dominant-baseline="central">#refConteneur</text>
+<rect class="ent" x="2190" y="80" width="250" height="159"/>
+<rect class="hd" x="2190" y="80" width="250" height="28"/>
+<text x="2315.0" y="94.0" class="en" text-anchor="middle" dominant-baseline="central">SOURCE_ENERGIE</text>
+<text x="2202" y="122.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idSource</text>
+<text x="2202" y="139.5" class="at" dominant-baseline="central">identitePrise</text>
+<text x="2202" y="156.5" class="at" dominant-baseline="central">mode</text>
+<text x="2202" y="173.5" class="at" dominant-baseline="central">active</text>
+<text x="2202" y="190.5" class="at" dominant-baseline="central">adresse?</text>
+<text x="2202" y="207.5" class="at" dominant-baseline="central">tarif?</text>
+<text x="2202" y="224.5" class="at" dominant-baseline="central">puissanceMax?</text>
+<rect class="ent" x="40" y="454" width="250" height="193"/>
+<rect class="hd" x="40" y="454" width="250" height="28"/>
+<text x="165.0" y="468.0" class="en" text-anchor="middle" dominant-baseline="central">RESULTAT</text>
+<text x="52" y="496.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idResultat</text>
+<text x="52" y="513.5" class="at" dominant-baseline="central">observeLe</text>
+<text x="52" y="530.5" class="at" dominant-baseline="central">dureeMs</text>
+<text x="52" y="547.5" class="at" dominant-baseline="central">issue</text>
+<text x="52" y="564.5" class="at" dominant-baseline="central">codeErreur?</text>
+<text x="52" y="581.5" class="at" dominant-baseline="central">statutHttp?</text>
+<text x="52" y="598.5" class="at" dominant-baseline="central">tlsExpireLe?</text>
+<text x="52" y="615.5" class="at" dominant-baseline="central">revisionSonde</text>
+<text x="52" y="632.5" class="fk" dominant-baseline="central">#idSonde</text>
+<rect class="ent" x="470" y="454" width="250" height="244"/>
+<rect class="hd" x="470" y="454" width="250" height="28"/>
+<text x="595.0" y="468.0" class="en" text-anchor="middle" dominant-baseline="central">INCIDENT</text>
+<text x="482" y="496.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idIncident</text>
+<text x="482" y="513.5" class="at" dominant-baseline="central">etat</text>
+<text x="482" y="530.5" class="at" dominant-baseline="central">premierEchecLe</text>
+<text x="482" y="547.5" class="at" dominant-baseline="central">ouvertLe</text>
+<text x="482" y="564.5" class="at" dominant-baseline="central">acquitteLe?</text>
+<text x="482" y="581.5" class="at" dominant-baseline="central">resoluLe?</text>
+<text x="482" y="598.5" class="at" dominant-baseline="central">closLe?</text>
+<text x="482" y="615.5" class="at" dominant-baseline="central">motifCloture?</text>
+<text x="482" y="632.5" class="at" dominant-baseline="central">cibleOrigine</text>
+<text x="482" y="649.5" class="at" dominant-baseline="central">typeOrigine</text>
+<text x="482" y="666.5" class="at" dominant-baseline="central">revisionSonde</text>
+<text x="482" y="683.5" class="fk" dominant-baseline="central">#idSonde</text>
+<rect class="ent" x="900" y="454" width="250" height="159"/>
+<rect class="hd" x="900" y="454" width="250" height="28"/>
+<text x="1025.0" y="468.0" class="en" text-anchor="middle" dominant-baseline="central">NOTIFICATION</text>
+<text x="912" y="496.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idNotification</text>
+<text x="912" y="513.5" class="at" dominant-baseline="central">type</text>
+<text x="912" y="530.5" class="at" dominant-baseline="central">destinataire</text>
+<text x="912" y="547.5" class="at" dominant-baseline="central">creeeLe</text>
+<text x="912" y="564.5" class="at" dominant-baseline="central">etatEnvoi</text>
+<text x="912" y="581.5" class="fk" dominant-baseline="central">#idIncident?</text>
+<text x="912" y="598.5" class="fk" dominant-baseline="central">#idSonde?</text>
+<rect class="ent" x="1330" y="454" width="250" height="159"/>
+<rect class="hd" x="1330" y="454" width="250" height="28"/>
+<text x="1455.0" y="468.0" class="en" text-anchor="middle" dominant-baseline="central">LIAISON_DOCKER</text>
+<text x="1342" y="496.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idLiaison</text>
+<text x="1342" y="513.5" class="at" dominant-baseline="central">refConnecteur</text>
+<text x="1342" y="530.5" class="at" dominant-baseline="central">refConteneur</text>
+<text x="1342" y="547.5" class="at" dominant-baseline="central">debutValidite</text>
+<text x="1342" y="564.5" class="at" dominant-baseline="central">finValidite?</text>
+<text x="1342" y="581.5" class="at" dominant-baseline="central">dernierEtat?</text>
+<text x="1342" y="598.5" class="fk" dominant-baseline="central">#idService</text>
+<rect class="ent" x="1760" y="454" width="250" height="142"/>
+<rect class="hd" x="1760" y="454" width="250" height="28"/>
+<text x="1885.0" y="468.0" class="en" text-anchor="middle" dominant-baseline="central">MAINTENANCE</text>
+<text x="1772" y="496.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idMaintenance</text>
+<text x="1772" y="513.5" class="at" dominant-baseline="central">debutLe</text>
+<text x="1772" y="530.5" class="at" dominant-baseline="central">finPrevue</text>
+<text x="1772" y="547.5" class="at" dominant-baseline="central">finEffective?</text>
+<text x="1772" y="564.5" class="at" dominant-baseline="central">motif?</text>
+<text x="1772" y="581.5" class="fk" dominant-baseline="central">#idService</text>
+<rect class="ent" x="2190" y="454" width="250" height="125"/>
+<rect class="hd" x="2190" y="454" width="250" height="28"/>
+<text x="2315.0" y="468.0" class="en" text-anchor="middle" dominant-baseline="central">EPOQUE_COMPTEUR</text>
+<text x="2202" y="496.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idEpoque</text>
+<text x="2202" y="513.5" class="at" dominant-baseline="central">debutLe</text>
+<text x="2202" y="530.5" class="at" dominant-baseline="central">finLe?</text>
+<text x="2202" y="547.5" class="at" dominant-baseline="central">motifOuverture</text>
+<text x="2202" y="564.5" class="fk" dominant-baseline="central">#idSource</text>
+<rect class="ent" x="470" y="828" width="250" height="278"/>
+<rect class="hd" x="470" y="828" width="250" height="28"/>
+<text x="595.0" y="842.0" class="en" text-anchor="middle" dominant-baseline="central">SONDE</text>
+<text x="482" y="870.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idSonde</text>
+<text x="482" y="887.5" class="at" dominant-baseline="central">nom</text>
+<text x="482" y="904.5" class="at" dominant-baseline="central">type</text>
+<text x="482" y="921.5" class="at" dominant-baseline="central">cible</text>
+<text x="482" y="938.5" class="at" dominant-baseline="central">port?</text>
+<text x="482" y="955.5" class="at" dominant-baseline="central">sni?</text>
+<text x="482" y="972.5" class="at" dominant-baseline="central">intervalle</text>
+<text x="482" y="989.5" class="at" dominant-baseline="central">timeout</text>
+<text x="482" y="1006.5" class="at" dominant-baseline="central">statutAttendu?</text>
+<text x="482" y="1023.5" class="at" dominant-baseline="central">seuilEchecs</text>
+<text x="482" y="1040.5" class="at" dominant-baseline="central">seuilReussites</text>
+<text x="482" y="1057.5" class="at" dominant-baseline="central">revision</text>
+<text x="482" y="1074.5" class="at" dominant-baseline="central">retireeLe?</text>
+<text x="482" y="1091.5" class="fk" dominant-baseline="central">#idService</text>
+<rect class="ent" x="1330" y="828" width="250" height="159"/>
+<rect class="hd" x="1330" y="828" width="250" height="28"/>
+<text x="1455.0" y="842.0" class="en" text-anchor="middle" dominant-baseline="central">SERVICE</text>
+<text x="1342" y="870.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idService</text>
+<text x="1342" y="887.5" class="at" dominant-baseline="central">nom</text>
+<text x="1342" y="904.5" class="at" dominant-baseline="central">nomNormalise</text>
+<text x="1342" y="921.5" class="at" dominant-baseline="central">adresse</text>
+<text x="1342" y="938.5" class="at" dominant-baseline="central">description?</text>
+<text x="1342" y="955.5" class="at" dominant-baseline="central">notesDepannage?</text>
+<text x="1342" y="972.5" class="at" dominant-baseline="central">modeSurveillance</text>
+<rect class="ent" x="2190" y="828" width="250" height="159"/>
+<rect class="hd" x="2190" y="828" width="250" height="28"/>
+<text x="2315.0" y="842.0" class="en" text-anchor="middle" dominant-baseline="central">RELEVE_ENERGIE</text>
+<text x="2202" y="870.5" class="at" dominant-baseline="central" text-decoration="underline" font-weight="700">idReleve</text>
+<text x="2202" y="887.5" class="at" dominant-baseline="central">observeLe</text>
+<text x="2202" y="904.5" class="at" dominant-baseline="central">puissanceW?</text>
+<text x="2202" y="921.5" class="at" dominant-baseline="central">compteurWh?</text>
+<text x="2202" y="938.5" class="at" dominant-baseline="central">qualite</text>
+<text x="2202" y="955.5" class="fk" dominant-baseline="central">#idSource</text>
+<text x="2202" y="972.5" class="fk" dominant-baseline="central">#idEpoque?</text>
+<text x="40" y="1151" class="ti">HomeOps — MLD v1 (Merise)</text>
+<text x="40" y="1174" class="no">14 relations · 12 clés étrangères · clé primaire soulignée · # clé étrangère (flèche vers la relation référencée) · ? nullable · contraintes : voir MLD.md</text>
+</svg>

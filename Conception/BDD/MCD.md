@@ -1,4 +1,4 @@
-# HomeOps — MCD v1.2 (Merise)
+# HomeOps — MCD v1.3 (Merise)
 
 Schéma unifié : [`MCD.svg`](MCD.svg) · [`MCD.png`](MCD.png).
 14 entités, 12 associations, aucune association n,n. Attributs techniques (verrous, empreintes,
@@ -13,14 +13,14 @@ Notation : premier attribut = identifiant · cardinalités `(min,max)` côté en
 | Instance | PARAMETRES_INSTANCE | idInstance, fuseau, emailNotification, themeDefaut, reductionAnimations, intervalleDefaut, timeoutDefaut, seuilEchecsDefaut, seuilReussitesDefaut, initialiseLe |
 | | ADMINISTRATEUR | idAdmin, login, creeLe, derniereConnexion |
 | Supervision | SERVICE | idService, nom, adresse, description, notesDepannage, modeSurveillance |
-| | SONDE | idSonde, nom, type, cible, port, sni, intervalle, timeout, statutAttendu, seuilEchecs, seuilReussites, revision |
+| | SONDE | idSonde, nom, type, cible, port, sni, intervalle, timeout, statutAttendu, seuilEchecs, seuilReussites, revision, retireeLe |
 | | RESULTAT | idResultat, observeLe, dureeMs, issue, codeErreur, statutHttp, tlsExpireLe, revisionSonde* |
 | Incidents | INCIDENT | idIncident, etat, premierEchecLe, ouvertLe, acquitteLe, resoluLe, closLe, motifCloture, cibleOrigine*, typeOrigine*, revisionSonde* |
 | | NOTE | idNote, texte, creeeLe |
 | | NOTIFICATION | idNotification, type, destinataire*, creeeLe, etatEnvoi |
 | Exploitation | MAINTENANCE | idMaintenance, debutLe, finPrevue, finEffective, motif |
 | | LIAISON_DOCKER | idLiaison, refConnecteur, refConteneur, debutValidite, finValidite, dernierEtat |
-| | INTERVENTION | idIntervention, action, etat, demandeeLe, lanceeLe, termineeLe, codeResultat |
+| | INTERVENTION | idIntervention, action, etat, demandeeLe, lanceeLe, termineeLe, codeResultat, verrouLeveLe, motifLevee |
 | Énergie | SOURCE_ENERGIE | idSource, identitePrise, mode, active, adresse, tarif, puissanceMax |
 | | EPOQUE_COMPTEUR | idEpoque, debutLe, finLe, motifOuverture |
 | | RELEVE_ENERGIE | idReleve, observeLe, puissanceW, compteurWh, qualite |
@@ -28,6 +28,8 @@ Notation : premier attribut = identifiant · cardinalités `(min,max)` côté en
 \* Instantané historisé : valeur figée à la création (la sonde ou l'adresse peut changer ensuite), pas une dépendance transitive.
 `etat` (INCIDENT, INTERVENTION) est l'état de la machine métier (§8.1, §10.2), non déductible des seules dates (ex. UNKNOWN, CLOSED).
 `refConnecteur` / `refConteneur` : identifiants externes côté Docker, pas des clés.
+`retireeLe` : une sonde retirée n'est plus exécutée mais garde son historique (incidents, notes) tant que le service existe (§13.3).
+`verrouLeveLe` / `motifLevee` : levée locale du blocage d'une intervention UNKNOWN, qui reste UNKNOWN (REQ-D10, §10.5).
 
 ## Associations
 
@@ -53,12 +55,17 @@ Notation : premier attribut = identifiant · cardinalités `(min,max)` côté en
 | CIF-1 | Au plus 1 INCIDENT actif (OPEN, ACKNOWLEDGED) par SONDE |
 | CIF-2 | Au plus 1 MAINTENANCE active par SERVICE |
 | CIF-3 | Au plus 1 LIAISON_DOCKER active par SERVICE ; un couple connecteur/conteneur actif sur au plus 1 SERVICE |
-| CIF-4 | Au plus 1 INTERVENTION non terminée par couple connecteur/conteneur, liaisons historiques comprises |
+| CIF-4 | Au plus 1 INTERVENTION bloquante (non terminée, ou UNKNOWN non levée) par couple connecteur/conteneur, liaisons historiques comprises |
 | CIF-5 | Un RELEVE_ENERGIE valide appartient à une époque de sa propre SOURCE_ENERGIE ; un relevé en erreur sans référence peut n'en avoir aucune |
 | CIF-6 | Au plus 1 EPOQUE_COMPTEUR courante par SOURCE_ENERGIE ; au plus 1 SOURCE_ENERGIE active |
 | NOTIF (X) | `signaler` et `concerner` exclusives : TEST → aucune ; TLS → `concerner` ; OUVERTURE / RETABLISSEMENT → `signaler` |
 | SINGL | PARAMETRES_INSTANCE : 1 occurrence ; ADMINISTRATEUR : 0 avant initialisation, 1 après |
+| LIMITES | Au plus 3 SONDE non retirées par SERVICE (borne 0,3 de `equiper`) ; au plus 20 SERVICE |
 | UNIQ | SERVICE.nom unique (insensible à la casse) ; RELEVE_ENERGIE unique par (source, observeLe) |
+
+## Changements v1.3 (revue du MLD)
+- SONDE.`retireeLe` : retrait logique, pour ne pas effacer l'historique d'incidents (§13.3).
+- INTERVENTION.`verrouLeveLe` / `motifLevee` : levée du blocage UNKNOWN (REQ-D10).
 
 ## Changements depuis v1.1
 - Liens vers ADMINISTRATEUR supprimés (`demander`, `rediger`, `declencher`, `acquitter`) : compte unique (RM22),
@@ -70,7 +77,4 @@ Notation : premier attribut = identifiant · cardinalités `(min,max)` côté en
 - Attributs techniques retirés (empreintes, verrous, snapshot, credential, file d'envoi, `versionSchema`, `revisionMode`).
 - PARAMETRES_INSTANCE et ADMINISTRATEUR restent sans association : singletons, volontaire.
 
-## Reporté au MLD
-- CIF-4 : recopier `refConnecteur` / `refConteneur` dans INTERVENTION + index unique partiel.
-- Lien incident → premier résultat éventuel : FK nullable `ON DELETE SET NULL` si besoin de diagnostic.
-- Cascades à la suppression d'un service (§13.3) ; CHECK NOTIF et CIF-5.
+Traduction relationnelle : voir [MLD.md](MLD.md).
